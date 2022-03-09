@@ -1,16 +1,31 @@
-.container {
+.itemContainer {
     display: flex;
     align-items: center;
     padding: 15px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.doneContainer {
+    background-color: lightgray;
 }
 
 .checkbox {
+    flex-shrink: 0;
     margin-right: 10px;
+    width: 18px;
+    height: 18px;
 }
 
 .deleteButton {
+    flex-shrink: 0;
     margin-left: 10px;
+    color: #FF3B30;
+    border: none;
+    background-color: transparent;
+}
+
+.deleteButton:active {
+    color: #c22b23;
 }
 
 .item {
