@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import { useEffect } from 'react';
 import '../styles/app.css';
 
 function App() {
@@ -10,17 +11,29 @@ function App() {
     setTodos([...todos, todo])
   }
 
-  function deleteTodo(todoToBeDeleted) {
-    setTodos(todos.filter(todo => todo.title !== todoToBeDeleted.title))
+  function deleteTodo(todoId) {
+    setTodos(todos.filter(todo => todo.id !== todoId))
   }
 
-  function toggleDone(todo) {
+  function toggleDone(todoId) {
     setTodos(todos.map(todo => {
-      if(todo.title === todo.title) {
+      if(todo.id === todoId) {
         return {...todo, done: !todo.done}
       }
+      return todo
     }))
   }
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("TODOS_STORAGE_KEY"))
+    if(storedTodos) {
+      setTodos(storedTodos)
+    }
+  }, [])
+
+  useEffect(() => {
+      localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos))
+  }, [todos])
 
   return (
     <div>

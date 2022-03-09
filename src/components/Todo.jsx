@@ -11,11 +11,11 @@ function Todo({ todo, deleteTodo, toggleDone }) {
     )
 
     function onDeleteClicked() {
-        deleteTodo(todo)
+        deleteTodo(todo.id)
     }
 
     function onDoneCheckChanged() {
-        toggleDone(todo)
+        toggleDone(todo.id)
     }
 }
 

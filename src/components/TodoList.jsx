@@ -6,7 +6,7 @@ function TodoList({ todos, deleteTodo, toggleDone }) {
     return (
         <ul className="list">
             {todos.map(todo => (
-                <Todo key={todo.title} todo={todo} deleteTodo={deleteTodo} toggleDone={toggleDone}></Todo>
+                <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleDone={toggleDone}></Todo>
             ))}
         </ul>
     );

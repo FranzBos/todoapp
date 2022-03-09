@@ -2,6 +2,7 @@ import React, {useState} from "react"
 
 function TodoForm({addTodo}) {
     const [todo, setTodo] = useState({
+        id: "",
         title: "",
         done: false
     });
@@ -13,7 +14,7 @@ function TodoForm({addTodo}) {
     function onSubmitClicked(event) {
         event.preventDefault();
         if(todo.title.trim()) {
-            addTodo(todo)
+            addTodo({...todo, id: Date.now()})
             setTodo({...todo, title: ""})
         }
     }
