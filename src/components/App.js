@@ -10,10 +10,14 @@ function App() {
     setTodos([...todos, todo])
   }
 
+  function deleteTodo(todoToBeDeleted) {
+    setTodos(todos.filter(todo => todo.title !== todoToBeDeleted.title))
+  }
+
   return (
     <div>
         <TodoForm addTodo={addTodo}/>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} deleteTodo={deleteTodo}/>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 .container {
     display: flex;
     align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
 .checkbox {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .deleteButton {
@@ -13,7 +15,7 @@
 
 .item {
     flex-grow: 1;
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: none;
 }
 
