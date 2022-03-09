@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
 import { useState } from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import '../styles/app.css';
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -12,11 +11,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
         <TodoForm addTodo={addTodo}/>
         <TodoList todos={todos}/>
-      </header>
     </div>
   );
 }

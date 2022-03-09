@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+.deleteButton {
+    margin-left: 10px;
+}
+
+.item {
+    flex-grow: 1;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.doneItem {
+    text-decoration: line-through;
+}
