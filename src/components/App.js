@@ -8,9 +8,9 @@ function App() {
   const [todos, setTodos] = useState([])
 
   function addTodo(todo) {
-    setTodos([...todos, todo])
+    setTodos([...todos, todo].sort((a,b) => b.id - a.id))
   }
-
+  
   function deleteTodo(todoId) {
     setTodos(todos.filter(todo => todo.id !== todoId))
   }
@@ -32,7 +32,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-      localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos))
+    localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos))
   }, [todos])
 
   return (
