@@ -20,7 +20,7 @@ function TodoForm({addTodo}) {
 
     return (
         <form onSubmit={onSubmitClicked}>
-            <input name="title" type="text" onChange={onTitleInputChange} />
+            <input name="title" type="text" value={todo.title} onChange={onTitleInputChange} />
             <button type="submit">Add</button>
         </form>
     )
