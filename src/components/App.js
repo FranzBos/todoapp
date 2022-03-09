@@ -14,10 +14,18 @@ function App() {
     setTodos(todos.filter(todo => todo.title !== todoToBeDeleted.title))
   }
 
+  function toggleDone(todo) {
+    setTodos(todos.map(todo => {
+      if(todo.title === todo.title) {
+        return {...todo, done: !todo.done}
+      }
+    }))
+  }
+
   return (
     <div>
         <TodoForm addTodo={addTodo}/>
-        <TodoList todos={todos} deleteTodo={deleteTodo}/>
+        <TodoList todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone}/>
     </div>
   );
 }
