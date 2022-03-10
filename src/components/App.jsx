@@ -37,8 +37,17 @@ function App() {
     )
   }
 
+  function updateTodo(todoToUpdate, title) {
+    setTodos(todos.map((todo) => {
+      if (todoToUpdate.id === todo.id) {
+        return { ...todo, title: title };
+      }
+      return todo;
+    }))
+  }
+
   function sortAndSetTodos(todos) {
-    let doneTodos = todos.filter((todo) => todo.done === true).sort((a, b) => b.id - a.id)
+    let doneTodos = todos.filter((todo) => todo.done === true)
     let todoTodos = todos.filter((todo) => todo.done === false).sort((a, b) => b.id - a.id)
     setTodos(todoTodos.concat(doneTodos));
   }
@@ -46,7 +55,7 @@ function App() {
   return (
     <div className="mainContainer">
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone} updateTodo={updateTodo}/>
     </div>
   );
 }

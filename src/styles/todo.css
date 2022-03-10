@@ -29,11 +29,17 @@
 }
 
 .item {
-    font-size: 15px;
-    text-decoration: none;
     width: 400px;
 }
 
-.doneItem {
+.itemLabel {
+    font-size: 15px;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.doneItemLabel {
     text-decoration: line-through;
 }

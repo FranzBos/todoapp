@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/todo.css";
 
-function Todo({ todo, deleteTodo, toggleDone }) {
+function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
   return (
     <div
       className={todo.done ? "itemContainer doneContainer" : "itemContainer"}
@@ -12,7 +12,9 @@ function Todo({ todo, deleteTodo, toggleDone }) {
         checked={todo.done}
         onChange={onDoneCheckChanged}
       />
-      <li className={todo.done ? "item doneItem" : "item"}>{todo.title}</li>
+      <li className="item">
+        <input type="text" className={todo.done ? "itemLabel doneItemLabel" : "itemLabel"} defaultValue={todo.title} onChange={event => onTitleEdited(event)}/>
+      </li>
       <button className="deleteButton" onClick={onDeleteClicked}>
         Delete
       </button>
@@ -25,6 +27,10 @@ function Todo({ todo, deleteTodo, toggleDone }) {
 
   function onDoneCheckChanged() {
     toggleDone(todo.id);
+  }
+
+  function onTitleEdited(event) {
+    updateTodo(todo, event.target.value)
   }
 }
 
