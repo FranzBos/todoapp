@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/todo.css";
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
 
@@ -33,9 +34,7 @@ function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
           onChange={onTitleEdited}
         />
       </li>
-      <button className="deleteButton" onClick={onDeleteClicked}>
-        Delete
-      </button>
+      <DeleteForeverOutlinedIcon className="deleteIcon" onClick={onDeleteClicked}/>
     </div>
   );
 
