@@ -10,14 +10,12 @@
 }
 
 .checkbox {
-    flex-shrink: 0;
     margin-right: 10px;
     width: 18px;
     height: 18px;
 }
 
 .deleteButton {
-    flex-shrink: 0;
     margin-left: 10px;
     color: #FF3B30;
     border: none;
@@ -29,7 +27,7 @@
 }
 
 .item {
-    width: 400px;
+    flex-grow: 1;
 }
 
 .itemLabel {

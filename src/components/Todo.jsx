@@ -2,6 +2,19 @@ import React from "react";
 import "../styles/todo.css";
 
 function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
+
+  function onDeleteClicked() {
+    deleteTodo(todo.id);
+  }
+
+  function onDoneCheckChanged() {
+    toggleDone(todo.id);
+  }
+
+  function onTitleEdited(event) {
+    updateTodo(todo, event.target.value);
+  }
+  
   return (
     <div
       className={todo.done ? "itemContainer doneContainer" : "itemContainer"}
@@ -13,7 +26,12 @@ function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
         onChange={onDoneCheckChanged}
       />
       <li className="item">
-        <input type="text" className={todo.done ? "itemLabel doneItemLabel" : "itemLabel"} defaultValue={todo.title} onChange={event => onTitleEdited(event)}/>
+        <input
+          type="text"
+          className={todo.done ? "itemLabel doneItemLabel" : "itemLabel"}
+          defaultValue={todo.title}
+          onChange={onTitleEdited}
+        />
       </li>
       <button className="deleteButton" onClick={onDeleteClicked}>
         Delete
@@ -21,17 +39,6 @@ function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
     </div>
   );
 
-  function onDeleteClicked() {
-    deleteTodo(todo.id);
-  }
-
-  function onDoneCheckChanged() {
-    toggleDone(todo.id);
-  }
-
-  function onTitleEdited(event) {
-    updateTodo(todo, event.target.value)
-  }
 }
 
 export default Todo;
