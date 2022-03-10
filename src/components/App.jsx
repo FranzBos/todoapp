@@ -7,8 +7,19 @@ import "../styles/app.css";
 function App() {
   const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("TODOS_STORAGE_KEY"));
+    if (storedTodos) {
+      sortAndSetTodos(storedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos));
+  }, [todos]);
+
   function addTodo(todo) {
-    setTodos([...todos, todo].sort((a, b) => b.id - a.id));
+    sortAndSetTodos([...todos, todo])
   }
 
   function deleteTodo(todoId) {
@@ -16,26 +27,21 @@ function App() {
   }
 
   function toggleDone(todoId) {
-    setTodos(
+    sortAndSetTodos(
       todos.map((todo) => {
         if (todo.id === todoId) {
           return { ...todo, done: !todo.done };
         }
         return todo;
       })
-    );
+    )
   }
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("TODOS_STORAGE_KEY"));
-    if (storedTodos) {
-      setTodos(storedTodos);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos));
-  }, [todos]);
+  function sortAndSetTodos(todos) {
+    let doneTodos = todos.filter((todo) => todo.done === true).sort((a, b) => b.id - a.id)
+    let todoTodos = todos.filter((todo) => todo.done === false).sort((a, b) => b.id - a.id)
+    setTodos(todoTodos.concat(doneTodos));
+  }
 
   return (
     <div className="mainContainer">
