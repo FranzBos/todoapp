@@ -38,7 +38,7 @@ function App() {
   }, [todos]);
 
   return (
-    <div>
+    <div className="mainContainer">
       <TodoForm addTodo={addTodo} />
       <TodoList todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone} />
     </div>

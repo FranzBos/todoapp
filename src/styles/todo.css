@@ -29,9 +29,9 @@
 }
 
 .item {
-    flex-grow: 1;
     font-size: 15px;
     text-decoration: none;
+    width: 400px;
 }
 
 .doneItem {

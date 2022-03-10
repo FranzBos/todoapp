@@ -9,6 +9,7 @@ function Todo({ todo, deleteTodo, toggleDone }) {
       <input
         type="checkbox"
         className="checkbox"
+        checked={todo.done}
         onChange={onDoneCheckChanged}
       />
       <li className={todo.done ? "item doneItem" : "item"}>{todo.title}</li>
