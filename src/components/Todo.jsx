@@ -3,14 +3,18 @@ import "../styles/todo.css";
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import Checkbox from '@mui/material/Checkbox';
 
-function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
+function Todo({ todo, deleteTodo, markAsTodo, markAsDone, updateTodo }) {
 
   function onDeleteClicked() {
     deleteTodo(todo.id);
   }
 
   function onDoneCheckChanged() {
-    toggleDone(todo.id);
+    if(todo.done) {
+      markAsTodo(todo.id)
+      return
+    }
+    markAsDone(todo.id)
   }
 
   function onTitleEdited(event) {

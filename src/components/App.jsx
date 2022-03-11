@@ -3,6 +3,7 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import { useEffect } from "react";
 import "../styles/app.css";
+import DoneList from "./DoneList";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -26,15 +27,12 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== todoId));
   }
 
-  function toggleDone(todoId) {
-    sortAndSetTodos(
-      todos.map((todo) => {
-        if (todo.id === todoId) {
-          return { ...todo, done: !todo.done };
-        }
-        return todo;
-      })
-    )
+  function markAsDone(todoId) {
+    markDone(todoId, true)
+  }
+
+  function markAsTodo(todoId) {
+    markDone(todoId, false)
   }
 
   function updateTodo(todoToUpdate, title) {
@@ -52,10 +50,22 @@ function App() {
     setTodos(todoTodos.concat(doneTodos));
   }
 
+  function markDone(todoId, done) {
+    sortAndSetTodos(
+      todos.map((todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, done: done };
+        }
+        return todo;
+      })
+    )
+  }
+
   return (
     <div className="mainContainer">
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone} updateTodo={updateTodo}/>
+      <TodoList todos={todos.filter((todo) => todo.done === false)} deleteTodo={deleteTodo} markAsDone={markAsDone} updateTodo={updateTodo}/>
+      <DoneList todos={todos.filter((todo) => todo.done === true)} deleteTodo={deleteTodo} markAsTodo={markAsTodo} updateTodo={updateTodo}/>
     </div>
   );
 }
