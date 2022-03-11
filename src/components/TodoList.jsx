@@ -5,7 +5,7 @@ import "../styles/todoList.css";
 function TodoList({ todos, deleteTodo, markAsDone, updateTodo }) {
   return (
     <div>
-      <h3>To do</h3>
+      <h3 className="title">To do</h3>
       <ul className="list">
         {todos.map((todo) => (
           <Todo

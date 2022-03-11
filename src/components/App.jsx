@@ -61,11 +61,21 @@ function App() {
     )
   }
 
+  let todoListComponent;
+  if(todos.filter((todo) => todo.done === false).length > 0) { 
+    todoListComponent = <TodoList todos={todos.filter((todo) => todo.done === false)} deleteTodo={deleteTodo} markAsDone={markAsDone} updateTodo={updateTodo}/>
+  }
+
+  let doneListComponent;
+  if(todos.filter((todo) => todo.done === true).length > 0) { 
+    doneListComponent = <DoneList todos={todos.filter((todo) => todo.done === true)} deleteTodo={deleteTodo} markAsTodo={markAsTodo} updateTodo={updateTodo}/>
+  }
+
   return (
     <div className="mainContainer">
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos.filter((todo) => todo.done === false)} deleteTodo={deleteTodo} markAsDone={markAsDone} updateTodo={updateTodo}/>
-      <DoneList todos={todos.filter((todo) => todo.done === true)} deleteTodo={deleteTodo} markAsTodo={markAsTodo} updateTodo={updateTodo}/>
+      {todoListComponent}
+      {doneListComponent}
     </div>
   );
 }
