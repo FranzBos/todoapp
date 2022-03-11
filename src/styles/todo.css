@@ -1,7 +1,7 @@
 .itemContainer {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 12px;
 }
 
 .doneContainer {
@@ -9,9 +9,6 @@
 }
 
 .checkbox {
-  margin-right: 10px;
-  width: 18px;
-  height: 18px;
   cursor: pointer;
 }
 
@@ -29,6 +26,7 @@
 
 .doneItemLabel {
   text-decoration: line-through;
+  color: rgb(92, 92, 92);
 }
 
 .deleteIcon {

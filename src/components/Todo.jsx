@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/todo.css";
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import Checkbox from '@mui/material/Checkbox';
 
 function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
 
@@ -20,8 +21,7 @@ function Todo({ todo, deleteTodo, toggleDone, updateTodo }) {
     <div
       className={todo.done ? "itemContainer doneContainer" : "itemContainer"}
     >
-      <input
-        type="checkbox"
+      <Checkbox
         className="checkbox"
         checked={todo.done}
         onChange={onDoneCheckChanged}
