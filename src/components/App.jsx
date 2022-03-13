@@ -20,7 +20,7 @@ function App() {
   }, [todos]);
 
   function addTodo(todo) {
-    sortAndSetTodos([...todos, todo])
+    sortAndSetTodos([...todos, todo]);
   }
 
   function deleteTodo(todoId) {
@@ -28,25 +28,29 @@ function App() {
   }
 
   function markAsDone(todoId) {
-    markDone(todoId, true)
+    markDone(todoId, true);
   }
 
   function markAsTodo(todoId) {
-    markDone(todoId, false)
+    markDone(todoId, false);
   }
 
   function updateTodo(todoToUpdate, title) {
-    setTodos(todos.map((todo) => {
-      if (todoToUpdate.id === todo.id) {
-        return { ...todo, title: title };
-      }
-      return todo;
-    }))
+    setTodos(
+      todos.map((todo) => {
+        if (todoToUpdate.id === todo.id) {
+          return { ...todo, title: title };
+        }
+        return todo;
+      })
+    );
   }
 
   function sortAndSetTodos(todos) {
-    let doneTodos = todos.filter((todo) => todo.done === true)
-    let todoTodos = todos.filter((todo) => todo.done === false).sort((a, b) => b.id - a.id)
+    let doneTodos = todos.filter((todo) => todo.done === true);
+    let todoTodos = todos
+      .filter((todo) => todo.done === false)
+      .sort((a, b) => b.id - a.id);
     setTodos(todoTodos.concat(doneTodos));
   }
 
@@ -58,24 +62,24 @@ function App() {
         }
         return todo;
       })
-    )
-  }
-
-  let todoListComponent;
-  if(todos.filter((todo) => todo.done === false).length > 0) { 
-    todoListComponent = <TodoList todos={todos.filter((todo) => todo.done === false)} deleteTodo={deleteTodo} markAsDone={markAsDone} updateTodo={updateTodo}/>
-  }
-
-  let doneListComponent;
-  if(todos.filter((todo) => todo.done === true).length > 0) { 
-    doneListComponent = <DoneList todos={todos.filter((todo) => todo.done === true)} deleteTodo={deleteTodo} markAsTodo={markAsTodo} updateTodo={updateTodo}/>
+    );
   }
 
   return (
     <div className="mainContainer">
       <TodoForm addTodo={addTodo} />
-      {todoListComponent}
-      {doneListComponent}
+      <TodoList
+        todos={todos.filter((todo) => todo.done === false)}
+        deleteTodo={deleteTodo}
+        markAsDone={markAsDone}
+        updateTodo={updateTodo}
+      />
+      <DoneList
+        todos={todos.filter((todo) => todo.done === true)}
+        deleteTodo={deleteTodo}
+        markAsTodo={markAsTodo}
+        updateTodo={updateTodo}
+      />
     </div>
   );
 }
