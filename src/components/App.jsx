@@ -5,18 +5,20 @@ import { useEffect } from "react";
 import "../styles/app.css";
 import DoneList from "./DoneList";
 
+const storageKey = "TODOS_STORAGE_KEY"
+
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("TODOS_STORAGE_KEY"));
+    const storedTodos = JSON.parse(localStorage.getItem(storageKey));
     if (storedTodos) {
       sortAndSetTodos(storedTodos);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("TODOS_STORAGE_KEY", JSON.stringify(todos));
+    localStorage.setItem(storageKey, JSON.stringify(todos));
   }, [todos]);
 
   function addTodo(todo) {

@@ -3,9 +3,8 @@ import Todo from "./Todo";
 import "../styles/todoList.css";
 
 function DoneList({ todos, deleteTodo, markAsTodo, updateTodo }) {
-  let doneList = null;
   if (todos.length > 0) {
-    doneList = (
+    return (
       <div>
         <h3 className="title">Done</h3>
         <ul className="list">
@@ -16,14 +15,13 @@ function DoneList({ todos, deleteTodo, markAsTodo, updateTodo }) {
               deleteTodo={deleteTodo}
               updateTodo={updateTodo}
               markAsTodo={markAsTodo}
-            ></Todo>
+            />
           ))}
         </ul>
       </div>
     );
   }
-
-  return doneList;
+  return null;
 }
 
 export default DoneList;
